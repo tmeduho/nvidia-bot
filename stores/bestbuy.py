@@ -83,7 +83,7 @@ class BestBuyHandler:
             )
 
             self.driver = webdriver.Chrome(
-                executable_path=binary_path,
+                executable_path="chromedriver.exe",
                 options=options,
             )
             log.info("Loading https://www.bestbuy.com.")

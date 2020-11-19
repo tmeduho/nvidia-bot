@@ -106,7 +106,7 @@ class Amazon:
             enable_headless()
         options.add_argument(f"user-data-dir=.profile-amz")
         try:
-            self.driver = webdriver.Chrome(executable_path=binary_path, options=options)
+            self.driver = webdriver.Chrome(executable_path="chromedriver.exe", options=options)
             self.wait = WebDriverWait(self.driver, 10)
         except SessionNotCreatedException as e:
             log.error(e)

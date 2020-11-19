@@ -9,6 +9,7 @@ from notifications.notifications import NotificationHandler, TIME_FORMAT
 from stores.amazon import Amazon
 from stores.bestbuy import BestBuyHandler
 from stores.nvidia import NvidiaBuyer, GPU_DISPLAY_NAMES, CURRENCY_LOCALE_MAP
+from stores.walmart import WalmartHandler
 from utils import selenium_utils
 from utils.logger import log
 
@@ -93,6 +94,17 @@ def bestbuy(sku, headless):
 
 
 @click.command()
+@click.option("--sku", type=str, required=False)
+@click.option("--headless", is_flag=True)
+@notify_on_crash
+def walmart(sku, headless):
+    wm = WalmartHandler(
+        sku, notification_handler=notification_handler, headless=headless
+    )
+    wm.run_item()
+
+
+@click.command()
 def test_notifications():
     enabled_handlers = ", ".join(notification_handler.get_enabled_handlers())
     time = datetime.now().strftime(TIME_FORMAT)
@@ -107,4 +119,5 @@ signal(SIGINT, handler)
 main.add_command(nvidia)
 main.add_command(amazon)
 main.add_command(bestbuy)
+main.add_command(walmart)
 main.add_command(test_notifications)

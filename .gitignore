@@ -5,6 +5,7 @@ Pipfile.lock
 geckodriver.log
 .profile
 .profile-amz*
+.profile-wm*
 *_config.json
 *.log
 __pycache__/
@@ -12,4 +13,5 @@ __pycache__/
 *.pkl
 .vscode/
 /config/apprise_config.json
-/config/apprise_config.json
+amazon_config.json
+walmart_config.json
